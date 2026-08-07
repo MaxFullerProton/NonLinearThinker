@@ -1,0 +1,17 @@
+# Arquivos locais git-crypt
+.git-crypt/
+.git/keys/
+
+# Editor
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Chaves locais (segurança)
+*.key
+*.gpg
