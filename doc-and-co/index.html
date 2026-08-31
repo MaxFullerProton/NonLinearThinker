@@ -1,0 +1,1043 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#121512" />
+  <meta name="description" content="DOC & CO. — inteligência, programas e execução para transformar complexidade humana e empresarial em clareza e próximo movimento." />
+  <meta property="og:title" content="DOC & CO. — Seu próximo movimento, visto com clareza." />
+  <meta property="og:description" content="Comece dizendo o que está acontecendo. A DOC & CO. organiza o contexto, identifica o que importa e desenha o próximo movimento." />
+  <title>DOC & CO. — Seu próximo movimento, visto com clareza.</title>
+  <style>
+    :root {
+      --ink: #131712;
+      --ink-soft: #343a33;
+      --paper: #f3f1eb;
+      --paper-2: #ebe8df;
+      --white: #fbfaf6;
+      --line: rgba(19, 23, 18, .14);
+      --line-dark: rgba(255,255,255,.16);
+      --moss: #465b48;
+      --moss-deep: #26362a;
+      --sage: #b9c4b6;
+      --sand: #d6c7b3;
+      --shadow: 0 24px 80px rgba(19, 23, 18, .12);
+      --radius: 28px;
+      --radius-sm: 18px;
+      --max: 1240px;
+      --serif: Iowan Old Style, Baskerville, Times New Roman, serif;
+      --sans: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", Helvetica, Arial, sans-serif;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: var(--paper);
+      font-family: var(--sans);
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+    }
+    body.modal-open { overflow: hidden; }
+    ::selection { background: var(--ink); color: var(--white); }
+    a { color: inherit; text-decoration: none; }
+    button, input, textarea, select { font: inherit; }
+    button { color: inherit; }
+    img { max-width: 100%; display: block; }
+
+    .skip-link {
+      position: fixed; left: 16px; top: -100px; z-index: 1000;
+      background: var(--ink); color: white; padding: 12px 16px; border-radius: 10px;
+      transition: top .2s ease;
+    }
+    .skip-link:focus { top: 16px; }
+
+    .container { width: min(var(--max), calc(100% - 48px)); margin: 0 auto; }
+    .section { padding: 120px 0; }
+    .section-tight { padding: 80px 0; }
+    .eyebrow {
+      display: inline-flex; align-items: center; gap: 10px;
+      font-size: 11px; line-height: 1; font-weight: 700; letter-spacing: .18em; text-transform: uppercase;
+    }
+    .eyebrow::before { content: ""; width: 28px; height: 1px; background: currentColor; opacity: .55; }
+    .display {
+      margin: 22px 0 0;
+      font-family: var(--serif); font-size: clamp(52px, 7.4vw, 108px); line-height: .93;
+      font-weight: 400; letter-spacing: -.055em;
+    }
+    .section-title {
+      font-family: var(--serif); font-size: clamp(42px, 5.2vw, 76px); line-height: .98;
+      letter-spacing: -.045em; font-weight: 400; margin: 18px 0 0;
+    }
+    .lead { font-size: clamp(18px, 2vw, 24px); line-height: 1.45; letter-spacing: -.02em; color: var(--ink-soft); }
+    .copy { font-size: 16px; line-height: 1.7; color: var(--ink-soft); }
+
+    .site-header {
+      position: fixed; inset: 0 0 auto 0; z-index: 50;
+      border-bottom: 1px solid transparent;
+      transition: background .3s ease, backdrop-filter .3s ease, border-color .3s ease;
+    }
+    .site-header.scrolled {
+      background: rgba(243, 241, 235, .78); backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px);
+      border-color: var(--line);
+    }
+    .nav { height: 82px; display: flex; align-items: center; justify-content: space-between; gap: 28px; }
+    .wordmark { display: inline-flex; align-items: center; gap: 9px; font-size: 18px; font-weight: 760; letter-spacing: -.035em; }
+    .wordmark .mark {
+      width: 27px; height: 27px; border: 1px solid currentColor; border-radius: 50%;
+      display: grid; place-items: center; font-family: var(--serif); font-size: 13px;
+    }
+    .nav-links { display: flex; align-items: center; gap: 28px; font-size: 13px; color: var(--ink-soft); }
+    .nav-links a { position: relative; }
+    .nav-links a::after { content: ""; position: absolute; left: 0; right: 100%; bottom: -7px; height: 1px; background: currentColor; transition: right .25s ease; }
+    .nav-links a:hover::after, .nav-links a:focus-visible::after { right: 0; }
+    .nav-cta, .button {
+      border: 0; border-radius: 999px; min-height: 50px; padding: 0 22px;
+      display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+      background: var(--ink); color: var(--white); font-size: 13px; font-weight: 680;
+      cursor: pointer; transition: transform .22s ease, background .22s ease, box-shadow .22s ease;
+    }
+    .nav-cta { min-height: 42px; padding: 0 18px; }
+    .button:hover, .nav-cta:hover { transform: translateY(-2px); box-shadow: 0 12px 30px rgba(19,23,18,.17); }
+    .button:active, .nav-cta:active { transform: translateY(0); }
+    .button.light { background: var(--white); color: var(--ink); }
+    .button.outline { background: transparent; color: var(--ink); border: 1px solid var(--line); }
+    .button.outline-light { background: transparent; color: var(--white); border: 1px solid var(--line-dark); }
+    .button.full { width: 100%; }
+    .button .arrow { transition: transform .2s ease; }
+    .button:hover .arrow { transform: translateX(4px); }
+
+    .hero {
+      min-height: 100vh; padding: 128px 0 48px; display: flex; align-items: stretch;
+      background:
+        radial-gradient(circle at 80% 10%, rgba(185,196,182,.45), transparent 30%),
+        radial-gradient(circle at 12% 74%, rgba(214,199,179,.34), transparent 29%),
+        var(--paper);
+      position: relative; overflow: hidden;
+    }
+    .hero::after {
+      content: ""; position: absolute; width: 580px; height: 580px; border: 1px solid rgba(19,23,18,.08);
+      border-radius: 50%; right: -260px; bottom: -330px; pointer-events: none;
+    }
+    .hero-grid { display: grid; grid-template-columns: minmax(0, 1.08fr) minmax(380px, .72fr); gap: 64px; align-items: center; width: 100%; }
+    .hero-copy { position: relative; z-index: 2; }
+    .hero-copy .display { max-width: 910px; }
+    .hero-copy .display em { color: var(--moss); font-style: italic; }
+    .hero-sub { max-width: 700px; margin: 28px 0 0; }
+
+    .hero-agent {
+      margin-top: 38px; max-width: 760px; padding: 13px;
+      border: 1px solid rgba(255,255,255,.72); border-radius: 30px;
+      background: rgba(255,255,255,.48); backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px);
+      box-shadow: 0 30px 90px rgba(30,38,30,.14), inset 0 1px 0 rgba(255,255,255,.65);
+    }
+    .agent-inner { background: rgba(251,250,246,.92); border: 1px solid var(--line); border-radius: 21px; padding: 22px; }
+    .agent-label { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 14px; }
+    .agent-label strong { font-size: 13px; letter-spacing: -.01em; }
+    .live-dot { display: inline-flex; align-items: center; gap: 8px; color: #617263; font-size: 11px; text-transform: uppercase; letter-spacing: .13em; }
+    .live-dot::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: #7d9c82; box-shadow: 0 0 0 5px rgba(125,156,130,.12); }
+    .agent-textarea {
+      width: 100%; min-height: 96px; resize: none; border: 0; outline: 0; padding: 0; background: transparent;
+      color: var(--ink); font-family: var(--serif); font-size: clamp(21px, 2.3vw, 30px); line-height: 1.2; letter-spacing: -.025em;
+    }
+    .agent-textarea::placeholder { color: #777b74; }
+    .thought-line { min-height: 24px; margin: 6px 0 16px; color: #72766f; font-size: 13px; transition: opacity .25s ease; }
+    .chips { display: flex; flex-wrap: wrap; gap: 8px; }
+    .chip {
+      min-height: 35px; padding: 0 13px; border: 1px solid var(--line); border-radius: 999px;
+      background: transparent; color: var(--ink-soft); font-size: 12px; cursor: pointer; transition: .2s ease;
+    }
+    .chip:hover, .chip.active, .chip:focus-visible { background: var(--ink); color: var(--white); border-color: var(--ink); }
+    .agent-actions { display: flex; align-items: center; justify-content: space-between; gap: 16px; margin-top: 18px; padding-top: 17px; border-top: 1px solid var(--line); }
+    .agent-note { font-size: 11px; line-height: 1.45; color: #777b74; max-width: 310px; }
+
+    .hero-visual {
+      position: relative; min-height: 690px; border-radius: 36px; overflow: hidden;
+      background:
+        linear-gradient(160deg, rgba(26,34,27,.05), rgba(26,34,27,.86)),
+        radial-gradient(circle at 35% 20%, #829185 0, #526054 22%, #263029 60%, #131713 100%);
+      box-shadow: var(--shadow);
+    }
+    .hero-photo {
+      position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center 20%;
+      filter: saturate(.76) contrast(1.03); opacity: .92;
+    }
+    .hero-shade { position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(10,14,11,.03) 28%, rgba(10,14,11,.88) 100%); }
+    .hero-monogram {
+      position: absolute; top: 26px; right: 30px; color: rgba(255,255,255,.72);
+      font-family: var(--serif); font-size: 100px; line-height: .8; letter-spacing: -.08em; mix-blend-mode: overlay;
+    }
+    .visual-card {
+      position: absolute; left: 26px; right: 26px; bottom: 26px; color: var(--white); padding: 24px;
+      border: 1px solid rgba(255,255,255,.18); border-radius: 24px;
+      background: rgba(12,16,13,.42); backdrop-filter: blur(22px); -webkit-backdrop-filter: blur(22px);
+    }
+    .visual-card p { margin: 0; font-family: var(--serif); font-size: clamp(27px, 3vw, 39px); line-height: 1.05; letter-spacing: -.035em; }
+    .visual-card footer { margin-top: 18px; display: flex; align-items: center; justify-content: space-between; font-size: 11px; letter-spacing: .14em; text-transform: uppercase; color: rgba(255,255,255,.7); }
+    .scroll-cue { position: absolute; left: 50%; bottom: 14px; transform: translateX(-50%); font-size: 10px; letter-spacing: .18em; text-transform: uppercase; opacity: .5; writing-mode: vertical-rl; }
+
+    .proof-strip { border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); background: rgba(255,255,255,.22); }
+    .proof-grid { display: grid; grid-template-columns: repeat(3, 1fr); }
+    .proof-item { min-height: 150px; padding: 30px; display: flex; flex-direction: column; justify-content: center; border-right: 1px solid var(--line); }
+    .proof-item:last-child { border-right: 0; }
+    .proof-item strong { font-family: var(--serif); font-size: 38px; line-height: 1; font-weight: 400; letter-spacing: -.035em; }
+    .proof-item span { margin-top: 10px; font-size: 12px; line-height: 1.5; text-transform: uppercase; letter-spacing: .12em; color: #6b7169; }
+
+    .manifesto-grid { display: grid; grid-template-columns: .82fr 1.18fr; gap: 70px; align-items: start; }
+    .manifesto-copy { max-width: 720px; }
+    .manifesto-copy .lead { font-size: clamp(24px, 3.3vw, 47px); line-height: 1.15; font-family: var(--serif); color: var(--ink); margin-top: 0; }
+    .manifesto-copy .lead em { color: var(--moss); }
+    .principles { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; margin-top: 50px; }
+    .principle { min-height: 190px; padding: 25px; background: rgba(255,255,255,.34); border: 1px solid var(--line); border-radius: var(--radius-sm); }
+    .principle .number { font-size: 11px; letter-spacing: .14em; color: #73786f; }
+    .principle h3 { margin: 38px 0 7px; font-family: var(--serif); font-weight: 400; font-size: 27px; letter-spacing: -.03em; }
+    .principle p { margin: 0; font-size: 13px; line-height: 1.55; color: #666d64; }
+
+    .doors { background: var(--ink); color: var(--white); }
+    .doors .eyebrow, .doors .copy { color: rgba(255,255,255,.68); }
+    .doors-head { display: grid; grid-template-columns: 1.2fr .8fr; gap: 40px; align-items: end; margin-bottom: 60px; }
+    .door-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; }
+    .door {
+      min-height: 390px; padding: 30px; border: 1px solid var(--line-dark); border-radius: 26px;
+      display: flex; flex-direction: column; justify-content: space-between; position: relative; overflow: hidden;
+      background: rgba(255,255,255,.025); transition: transform .3s ease, background .3s ease, border-color .3s ease;
+    }
+    .door::after { content: ""; position: absolute; width: 270px; height: 270px; border: 1px solid rgba(255,255,255,.07); border-radius: 50%; right: -110px; bottom: -130px; transition: transform .5s ease; }
+    .door:hover { transform: translateY(-5px); background: rgba(255,255,255,.055); border-color: rgba(255,255,255,.28); }
+    .door:hover::after { transform: scale(1.18); }
+    .door-kicker { font-size: 11px; letter-spacing: .14em; text-transform: uppercase; color: rgba(255,255,255,.5); }
+    .door h3 { margin: 12px 0; font-family: var(--serif); font-size: clamp(33px, 4vw, 52px); font-weight: 400; letter-spacing: -.04em; }
+    .door p { max-width: 430px; font-size: 14px; line-height: 1.65; color: rgba(255,255,255,.62); }
+    .door-link { display: inline-flex; align-items: center; gap: 10px; font-size: 13px; font-weight: 650; }
+    .door-link span { width: 32px; height: 32px; border-radius: 50%; border: 1px solid var(--line-dark); display: grid; place-items: center; }
+
+    .method-intro { display: grid; grid-template-columns: .9fr 1.1fr; gap: 70px; align-items: end; }
+    .method-line { margin-top: 64px; border-top: 1px solid var(--line); }
+    .method-step { display: grid; grid-template-columns: 90px .72fr 1.28fr; gap: 30px; padding: 32px 0; border-bottom: 1px solid var(--line); align-items: center; }
+    .method-step .num { font-size: 11px; letter-spacing: .16em; color: #73786f; }
+    .method-step h3 { margin: 0; font-family: var(--serif); font-size: 34px; font-weight: 400; letter-spacing: -.035em; }
+    .method-step p { margin: 0; font-size: 14px; line-height: 1.6; color: #61675f; }
+
+    .map-section { background: var(--paper-2); }
+    .map-grid { display: grid; grid-template-columns: .86fr 1.14fr; gap: 76px; align-items: center; }
+    .map-copy .lead { max-width: 560px; }
+    .map-list { list-style: none; padding: 0; margin: 34px 0; display: grid; gap: 13px; }
+    .map-list li { display: flex; align-items: center; gap: 12px; font-size: 14px; color: var(--ink-soft); }
+    .map-list li::before { content: "✓"; width: 24px; height: 24px; border: 1px solid var(--line); border-radius: 50%; display: grid; place-items: center; font-size: 11px; }
+    .map-preview {
+      padding: 14px; border-radius: 32px; background: rgba(255,255,255,.38); border: 1px solid rgba(255,255,255,.65); box-shadow: var(--shadow);
+      transform: rotate(1.1deg);
+    }
+    .map-sheet { background: var(--white); border: 1px solid var(--line); border-radius: 22px; padding: 30px; }
+    .map-sheet-head { display: flex; justify-content: space-between; gap: 20px; align-items: center; padding-bottom: 22px; border-bottom: 1px solid var(--line); }
+    .map-sheet-head strong { font-size: 14px; letter-spacing: -.01em; }
+    .map-sheet-head span { font-size: 10px; text-transform: uppercase; letter-spacing: .14em; color: #71776f; }
+    .map-block { padding: 21px 0; border-bottom: 1px solid var(--line); }
+    .map-block:last-child { border-bottom: 0; }
+    .map-block label { display: block; font-size: 9px; text-transform: uppercase; letter-spacing: .17em; color: #777d74; margin-bottom: 9px; }
+    .map-block p { margin: 0; font-family: var(--serif); font-size: 22px; line-height: 1.2; letter-spacing: -.025em; }
+    .map-next { color: var(--moss-deep); }
+
+    .offers-head { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: end; margin-bottom: 54px; }
+    .pricing-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; align-items: stretch; }
+    .plan { border: 1px solid var(--line); border-radius: 24px; background: rgba(255,255,255,.28); padding: 25px; display: flex; flex-direction: column; min-height: 520px; position: relative; overflow: hidden; }
+    .plan.featured { background: var(--moss-deep); color: var(--white); border-color: var(--moss-deep); transform: translateY(-12px); box-shadow: var(--shadow); }
+    .plan-tag { font-size: 10px; letter-spacing: .14em; text-transform: uppercase; color: #6d736b; }
+    .featured .plan-tag { color: rgba(255,255,255,.6); }
+    .plan h3 { font-family: var(--serif); font-size: 29px; font-weight: 400; letter-spacing: -.035em; margin: 17px 0 8px; }
+    .plan-desc { font-size: 13px; line-height: 1.55; color: #656b63; min-height: 62px; }
+    .featured .plan-desc { color: rgba(255,255,255,.64); }
+    .price { margin: 24px 0 7px; font-family: var(--serif); font-size: 36px; letter-spacing: -.04em; }
+    .price small { font-family: var(--sans); font-size: 11px; letter-spacing: 0; color: #757b73; }
+    .featured .price small { color: rgba(255,255,255,.55); }
+    .plan ul { list-style: none; margin: 25px 0 28px; padding: 22px 0 0; border-top: 1px solid var(--line); display: grid; gap: 12px; }
+    .featured ul { border-color: var(--line-dark); }
+    .plan li { font-size: 12px; line-height: 1.45; display: flex; gap: 9px; align-items: flex-start; }
+    .plan li::before { content: "•"; }
+    .plan .button { margin-top: auto; }
+    .advisory-band { margin-top: 15px; padding: 32px; border-radius: 24px; border: 1px solid var(--line); display: grid; grid-template-columns: 1.25fr .75fr; gap: 30px; align-items: center; background: rgba(255,255,255,.28); }
+    .advisory-band h3 { margin: 0; font-family: var(--serif); font-size: 34px; font-weight: 400; letter-spacing: -.035em; }
+    .advisory-band p { margin: 9px 0 0; color: #656b63; font-size: 13px; line-height: 1.55; }
+    .advisory-price { text-align: right; }
+    .advisory-price strong { display: block; font-family: var(--serif); font-size: 30px; font-weight: 400; }
+    .advisory-price span { font-size: 10px; letter-spacing: .12em; text-transform: uppercase; color: #71776f; }
+
+    .company { background: var(--white); }
+    .company-grid { display: grid; grid-template-columns: 1.05fr .95fr; gap: 70px; align-items: stretch; }
+    .company-statement { padding-right: 30px; }
+    .company-statement .section-title em { color: var(--moss); }
+    .company-statement .lead { max-width: 640px; }
+    .company-card { background: var(--ink); color: var(--white); border-radius: 32px; padding: 40px; min-height: 570px; position: relative; overflow: hidden; display: flex; flex-direction: column; justify-content: space-between; }
+    .company-card::before { content: "&"; position: absolute; right: -20px; bottom: -86px; font-family: var(--serif); font-size: 390px; line-height: 1; color: rgba(255,255,255,.04); }
+    .company-card-top { display: flex; justify-content: space-between; gap: 20px; font-size: 10px; letter-spacing: .14em; text-transform: uppercase; color: rgba(255,255,255,.55); }
+    .company-card blockquote { margin: 80px 0 0; max-width: 520px; font-family: var(--serif); font-size: clamp(34px, 4vw, 56px); line-height: 1.02; letter-spacing: -.045em; }
+    .company-card footer { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; padding-top: 28px; border-top: 1px solid var(--line-dark); }
+    .company-card footer span { font-size: 11px; line-height: 1.55; color: rgba(255,255,255,.58); }
+
+    .about-grid { display: grid; grid-template-columns: .72fr 1.28fr; gap: 75px; align-items: start; }
+    .about-sticky { position: sticky; top: 120px; }
+    .about-copy .intro { font-family: var(--serif); font-size: clamp(30px, 4vw, 50px); line-height: 1.12; letter-spacing: -.035em; margin: 0 0 40px; }
+    .about-copy .copy { max-width: 760px; }
+    .about-points { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 42px; }
+    .about-point { min-height: 180px; padding: 23px; border: 1px solid var(--line); border-radius: var(--radius-sm); }
+    .about-point strong { display: block; font-family: var(--serif); font-size: 26px; font-weight: 400; letter-spacing: -.03em; }
+    .about-point span { display: block; margin-top: 12px; font-size: 12px; line-height: 1.55; color: #686e66; }
+
+    .faq { border-top: 1px solid var(--line); }
+    .faq-grid { display: grid; grid-template-columns: .78fr 1.22fr; gap: 75px; }
+    .faq-list { border-top: 1px solid var(--line); }
+    details { border-bottom: 1px solid var(--line); }
+    summary { list-style: none; cursor: pointer; display: flex; justify-content: space-between; gap: 20px; align-items: center; padding: 25px 0; font-size: 16px; font-weight: 620; }
+    summary::-webkit-details-marker { display: none; }
+    summary::after { content: "+"; width: 30px; height: 30px; border: 1px solid var(--line); border-radius: 50%; display: grid; place-items: center; font-weight: 400; transition: transform .2s ease; flex: 0 0 auto; }
+    details[open] summary::after { transform: rotate(45deg); }
+    details p { margin: -4px 48px 25px 0; font-size: 14px; line-height: 1.7; color: #636961; }
+
+    .closing { padding: 42px 0; }
+    .closing-card { min-height: 580px; border-radius: 36px; padding: 64px; background: var(--moss-deep); color: var(--white); display: flex; flex-direction: column; justify-content: space-between; position: relative; overflow: hidden; }
+    .closing-card::after { content: "DOC"; position: absolute; right: -20px; bottom: -90px; font-family: var(--serif); font-size: clamp(180px, 27vw, 410px); line-height: .8; letter-spacing: -.09em; color: rgba(255,255,255,.035); }
+    .closing-card .section-title { max-width: 850px; position: relative; z-index: 2; }
+    .closing-bottom { display: flex; align-items: flex-end; justify-content: space-between; gap: 30px; position: relative; z-index: 2; }
+    .closing-bottom p { max-width: 520px; margin: 0; color: rgba(255,255,255,.65); font-size: 14px; line-height: 1.65; }
+
+    .site-footer { padding: 45px 0 36px; }
+    .footer-grid { display: grid; grid-template-columns: 1fr auto; gap: 30px; align-items: end; }
+    .footer-meta { margin-top: 20px; font-size: 11px; line-height: 1.6; color: #737970; }
+    .footer-right { text-align: right; font-size: 11px; line-height: 1.8; color: #737970; }
+
+    .modal {
+      position: fixed; inset: 0; z-index: 100; display: none; place-items: center; padding: 22px;
+      background: rgba(11,14,11,.72); backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px);
+    }
+    .modal.open { display: grid; animation: fadeIn .22s ease both; }
+    .modal-panel {
+      width: min(860px, 100%); max-height: min(850px, calc(100vh - 44px)); overflow: auto;
+      background: var(--white); border-radius: 30px; box-shadow: 0 40px 120px rgba(0,0,0,.35); position: relative;
+    }
+    .modal-head { position: sticky; top: 0; z-index: 4; display: flex; align-items: center; justify-content: space-between; gap: 20px; padding: 20px 24px; border-bottom: 1px solid var(--line); background: rgba(251,250,246,.92); backdrop-filter: blur(18px); }
+    .modal-head strong { font-size: 14px; }
+    .close-button { width: 38px; height: 38px; border-radius: 50%; border: 1px solid var(--line); background: transparent; display: grid; place-items: center; cursor: pointer; font-size: 20px; }
+    .modal-body { padding: 36px; }
+    .progress { height: 3px; background: var(--paper-2); border-radius: 999px; overflow: hidden; margin-bottom: 42px; }
+    .progress span { display: block; height: 100%; width: 16.6%; background: var(--moss); transition: width .35s ease; }
+    .wizard-step { display: none; animation: slideIn .28s ease both; }
+    .wizard-step.active { display: block; }
+    .step-kicker { font-size: 10px; letter-spacing: .16em; text-transform: uppercase; color: #737970; }
+    .wizard-step h2 { margin: 12px 0 14px; font-family: var(--serif); font-size: clamp(35px, 5vw, 52px); line-height: 1; font-weight: 400; letter-spacing: -.04em; }
+    .wizard-step > p { color: #686e66; font-size: 14px; line-height: 1.6; }
+    .field { margin-top: 28px; }
+    .field label { display: block; font-size: 12px; font-weight: 650; margin-bottom: 9px; }
+    .field textarea, .field input {
+      width: 100%; border: 1px solid var(--line); border-radius: 16px; background: var(--paper); padding: 16px; color: var(--ink); outline: none; transition: border .2s ease, box-shadow .2s ease;
+    }
+    .field textarea { min-height: 145px; resize: vertical; line-height: 1.55; }
+    .field textarea:focus, .field input:focus { border-color: var(--moss); box-shadow: 0 0 0 4px rgba(70,91,72,.09); }
+    .option-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; margin-top: 28px; }
+    .option {
+      min-height: 110px; border: 1px solid var(--line); border-radius: 17px; padding: 17px; background: transparent; text-align: left; cursor: pointer; transition: .2s ease;
+    }
+    .option strong { display: block; font-family: var(--serif); font-size: 23px; font-weight: 400; letter-spacing: -.025em; }
+    .option span { display: block; margin-top: 7px; font-size: 11px; line-height: 1.45; color: #70766d; }
+    .option:hover, .option.selected { background: var(--ink); color: var(--white); border-color: var(--ink); }
+    .option:hover span, .option.selected span { color: rgba(255,255,255,.6); }
+    .range-wrap { margin-top: 35px; }
+    input[type="range"] { width: 100%; accent-color: var(--moss); }
+    .range-labels { display: flex; justify-content: space-between; margin-top: 8px; font-size: 10px; text-transform: uppercase; letter-spacing: .11em; color: #747a72; }
+    .urgency-value { font-family: var(--serif); font-size: 65px; line-height: 1; margin-top: 20px; }
+    .wizard-actions { display: flex; justify-content: space-between; gap: 12px; margin-top: 38px; }
+    .wizard-actions .button { min-width: 135px; }
+    .back-button { border: 0; background: transparent; cursor: pointer; color: #6e746c; padding: 0 10px; }
+
+    .result-head { display: flex; justify-content: space-between; align-items: start; gap: 25px; padding-bottom: 25px; border-bottom: 1px solid var(--line); }
+    .result-head h2 { margin: 0; font-family: var(--serif); font-size: clamp(38px, 5vw, 58px); line-height: .95; font-weight: 400; letter-spacing: -.045em; }
+    .result-badge { flex: 0 0 auto; padding: 9px 12px; border: 1px solid var(--line); border-radius: 999px; font-size: 9px; letter-spacing: .13em; text-transform: uppercase; }
+    .result-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 24px; }
+    .result-item { min-height: 160px; border: 1px solid var(--line); border-radius: 17px; padding: 18px; }
+    .result-item.full { grid-column: 1 / -1; min-height: auto; background: var(--paper); }
+    .result-item label { display: block; font-size: 9px; text-transform: uppercase; letter-spacing: .16em; color: #777d74; }
+    .result-item p { margin: 17px 0 0; font-family: var(--serif); font-size: 22px; line-height: 1.23; letter-spacing: -.025em; white-space: pre-wrap; }
+    .recommendation { margin-top: 12px; padding: 24px; background: var(--moss-deep); color: var(--white); border-radius: 19px; display: grid; grid-template-columns: 1fr auto; gap: 22px; align-items: center; }
+    .recommendation span { display: block; font-size: 9px; letter-spacing: .16em; text-transform: uppercase; color: rgba(255,255,255,.55); }
+    .recommendation strong { display: block; margin-top: 8px; font-family: var(--serif); font-size: 28px; font-weight: 400; }
+    .result-actions { display: flex; flex-wrap: wrap; gap: 9px; margin-top: 18px; }
+    .privacy-note { margin: 18px 0 0; font-size: 10px; line-height: 1.5; color: #777d74; }
+    .toast { position: fixed; left: 50%; bottom: 24px; z-index: 150; transform: translate(-50%, 20px); opacity: 0; pointer-events: none; background: var(--ink); color: var(--white); padding: 12px 17px; border-radius: 999px; font-size: 12px; transition: .25s ease; }
+    .toast.show { opacity: 1; transform: translate(-50%,0); }
+
+    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+    @keyframes slideIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+    @media (max-width: 1080px) {
+      .hero-grid { grid-template-columns: 1fr; }
+      .hero-visual { min-height: 560px; }
+      .hero { min-height: auto; }
+      .manifesto-grid, .method-intro, .map-grid, .company-grid, .about-grid, .faq-grid { grid-template-columns: 1fr; }
+      .manifesto-copy { max-width: none; }
+      .doors-head, .offers-head { grid-template-columns: 1fr; align-items: start; }
+      .pricing-grid { grid-template-columns: repeat(2, 1fr); }
+      .plan.featured { transform: none; }
+      .about-sticky { position: static; }
+    }
+
+    @media (max-width: 760px) {
+      .container { width: min(100% - 28px, var(--max)); }
+      .section { padding: 84px 0; }
+      .nav { height: 70px; }
+      .nav-links { display: none; }
+      .nav-cta { min-height: 38px; padding: 0 14px; }
+      .hero { padding-top: 100px; }
+      .hero-grid { gap: 42px; }
+      .display { font-size: clamp(50px, 15.5vw, 76px); }
+      .hero-agent { margin-top: 30px; padding: 8px; border-radius: 25px; }
+      .agent-inner { padding: 17px; }
+      .agent-actions { align-items: stretch; flex-direction: column; }
+      .agent-actions .button { width: 100%; }
+      .hero-visual { min-height: 500px; border-radius: 28px; }
+      .visual-card { left: 15px; right: 15px; bottom: 15px; padding: 20px; }
+      .proof-grid { grid-template-columns: 1fr; }
+      .proof-item { border-right: 0; border-bottom: 1px solid var(--line); min-height: 118px; padding: 24px 6px; }
+      .proof-item:last-child { border-bottom: 0; }
+      .principles, .door-grid, .pricing-grid, .about-points, .result-grid { grid-template-columns: 1fr; }
+      .door { min-height: 320px; }
+      .method-step { grid-template-columns: 45px 1fr; gap: 18px; }
+      .method-step p { grid-column: 2; }
+      .map-preview { transform: none; }
+      .plan { min-height: auto; }
+      .advisory-band, .company-card footer, .recommendation { grid-template-columns: 1fr; }
+      .advisory-price { text-align: left; }
+      .closing-card { padding: 38px 25px; min-height: 540px; }
+      .closing-bottom { align-items: stretch; flex-direction: column; }
+      .footer-grid { grid-template-columns: 1fr; }
+      .footer-right { text-align: left; }
+      .modal { padding: 0; align-items: end; }
+      .modal-panel { max-height: 94vh; border-radius: 25px 25px 0 0; }
+      .modal-body { padding: 27px 20px 34px; }
+      .option-grid { grid-template-columns: 1fr; }
+      .result-item.full { grid-column: auto; }
+      .result-head { flex-direction: column; }
+      .wizard-actions .button { min-width: 0; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; transition-duration: .01ms !important; }
+    }
+
+    @media print {
+      body * { visibility: hidden; }
+      #wizardModal, #wizardModal * { visibility: visible; }
+      #wizardModal { position: absolute; inset: 0; display: block; background: white; padding: 0; }
+      .modal-panel { width: 100%; max-height: none; box-shadow: none; border-radius: 0; }
+      .modal-head, .result-actions, .recommendation .button, .privacy-note { display: none !important; }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main">Ir para o conteúdo</a>
+
+  <header class="site-header" id="siteHeader">
+    <div class="container nav">
+      <a class="wordmark" href="#top" aria-label="DOC & CO. — início">
+        <span class="mark" aria-hidden="true">D</span>
+        <span>DOC & CO.</span>
+      </a>
+      <nav class="nav-links" aria-label="Navegação principal">
+        <a href="#paths">Caminhos</a>
+        <a href="#method">Método</a>
+        <a href="#doc-map">DOC MAP</a>
+        <a href="#offers">Acesso</a>
+        <a href="#about">Doc</a>
+      </nav>
+      <button class="nav-cta js-start" type="button">Começar</button>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="hero" id="top">
+      <div class="container hero-grid">
+        <div class="hero-copy">
+          <span class="eyebrow">Founder-led intelligence company</span>
+          <h1 class="display">Seu próximo movimento, <em>visto com clareza.</em></h1>
+          <p class="lead hero-sub">A DOC & CO. transforma a forma do Doc enxergar, conectar, decidir e construir em inteligência, programas e execução.</p>
+
+          <form class="hero-agent" id="heroForm">
+            <div class="agent-inner">
+              <div class="agent-label">
+                <strong>O que você quer transformar agora?</strong>
+                <span class="live-dot">Ask Doc</span>
+              </div>
+              <textarea class="agent-textarea" id="heroContext" aria-label="Conte o que está acontecendo" placeholder="Conte o que está acontecendo..."></textarea>
+              <div class="thought-line" id="thoughtLine" aria-live="polite">“Tenho muitas informações e nenhuma sequência clara.”</div>
+              <div class="chips" aria-label="Escolha uma área">
+                <button class="chip" type="button" data-domain="human">Minha saúde e energia</button>
+                <button class="chip" type="button" data-domain="practice">Minha prática profissional</button>
+                <button class="chip" type="button" data-domain="company">Minha empresa</button>
+                <button class="chip" type="button" data-domain="project">Meu próximo projeto</button>
+                <button class="chip" type="button" data-domain="learning">Quero aprender com o Doc</button>
+              </div>
+              <div class="agent-actions">
+                <span class="agent-note">Comece sem escolher um produto. Primeiro entendemos o contexto.</span>
+                <button class="button" type="submit">Criar meu DOC MAP <span class="arrow">→</span></button>
+              </div>
+            </div>
+          </form>
+        </div>
+
+        <aside class="hero-visual" aria-label="DOC & CO. — visão e sistema">
+          <img class="hero-photo" src="https://lh3.googleusercontent.com/d/1ObfhB18X5j1fIrruFfXxsFnBGig9homS=w1600" alt="Doc em sessão editorial" onerror="this.style.display='none'" />
+          <div class="hero-shade"></div>
+          <div class="hero-monogram" aria-hidden="true">D</div>
+          <div class="visual-card">
+            <p>Mais informação não resolve complexidade. Clareza, sequência e execução resolvem.</p>
+            <footer><span>Princípio DOC & CO.</span><span>Human first</span></footer>
+          </div>
+        </aside>
+        <span class="scroll-cue" aria-hidden="true">Explore</span>
+      </div>
+    </section>
+
+    <section class="proof-strip" aria-label="Experiência aplicada">
+      <div class="container proof-grid">
+        <div class="proof-item"><strong>15+</strong><span>anos de prática aplicada</span></div>
+        <div class="proof-item"><strong>20.000+</strong><span>programas desenvolvidos</span></div>
+        <div class="proof-item"><strong>1 sistema</strong><span>contexto → decisão → execução</span></div>
+      </div>
+    </section>
+
+    <section class="section" id="why">
+      <div class="container manifesto-grid">
+        <div>
+          <span class="eyebrow">O problema real</span>
+          <h2 class="section-title">Você não precisa de mais uma opinião isolada.</h2>
+        </div>
+        <div class="manifesto-copy">
+          <p class="lead">Precisa de um sistema que compreenda o contexto, conecte os sinais, identifique o que importa <em>agora</em> e transforme isso em um caminho executável.</p>
+          <div class="principles">
+            <article class="principle"><span class="number">01</span><h3>Clareza</h3><p>O que realmente está acontecendo, sem reduzir o problema ao primeiro sintoma.</p></article>
+            <article class="principle"><span class="number">02</span><h3>Prioridade</h3><p>O que precisa ser decidido antes de adicionar novas ações, produtos ou complexidade.</p></article>
+            <article class="principle"><span class="number">03</span><h3>Programa</h3><p>Uma sequência desenhada para sua realidade, restrições e momento de vida.</p></article>
+            <article class="principle"><span class="number">04</span><h3>Execução</h3><p>O menor próximo movimento capaz de gerar evidência, aprendizado e resultado.</p></article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="doors section" id="paths">
+      <div class="container">
+        <div class="doors-head">
+          <div><span class="eyebrow">Quatro portas</span><h2 class="section-title">Comece por você. Não pelo catálogo.</h2></div>
+          <p class="copy">Você não precisa conhecer todas as Companies, métodos e produtos. Diga o que está tentando transformar. A DOC & CO. reconhece a intenção e encaminha para o caminho certo.</p>
+        </div>
+        <div class="door-grid">
+          <article class="door" data-domain-card="human">
+            <div><span class="door-kicker">Para mim</span><h3>Human Performance</h3><p>Saúde, energia, longevidade, clareza e infraestrutura biológica para sustentar a vida que você quer construir.</p></div>
+            <button class="door-link js-domain-start" data-domain="human" type="button">Começar por aqui <span>→</span></button>
+          </article>
+          <article class="door" data-domain-card="practice">
+            <div><span class="door-kicker">Para minha prática</span><h3>Profissional</h3><p>Organizar conhecimento, transformar experiência em método, criar produtos e construir uma prática menos dependente do fundador.</p></div>
+            <button class="door-link js-domain-start" data-domain="practice" type="button">Começar por aqui <span>→</span></button>
+          </article>
+          <article class="door" data-domain-card="company">
+            <div><span class="door-kicker">Para minha empresa</span><h3>Company Building</h3><p>Clareza estratégica, sistemas de decisão, operação AI First, oferta, execução e redução da dependência do fundador.</p></div>
+            <button class="door-link js-domain-start" data-domain="company" type="button">Começar por aqui <span>→</span></button>
+          </article>
+          <article class="door" data-domain-card="project">
+            <div><span class="door-kicker">Construir com o Doc</span><h3>Advisory & Ventures</h3><p>Projetos especiais, propriedade intelectual, novas Companies, instituições, investidores e parcerias de alta alavancagem.</p></div>
+            <button class="door-link js-domain-start" data-domain="project" type="button">Começar por aqui <span>→</span></button>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="method">
+      <div class="container">
+        <div class="method-intro">
+          <div><span class="eyebrow">The Doc Method</span><h2 class="section-title">Do contexto ao resultado.</h2></div>
+          <p class="lead">O método não começa com uma solução pronta. Ele começa reconstruindo o problema até que a próxima decisão fique evidente.</p>
+        </div>
+        <div class="method-line">
+          <article class="method-step"><span class="num">01</span><h3>SEE</h3><p>Enxergar o todo: realidade, história, contexto, sinais, desejo e restrições.</p></article>
+          <article class="method-step"><span class="num">02</span><h3>CONNECT</h3><p>Conectar informações que normalmente permanecem fragmentadas entre pessoas, sistemas e áreas.</p></article>
+          <article class="method-step"><span class="num">03</span><h3>DECIDE</h3><p>Separar o importante do urgente e definir qual decisão destrava o sistema.</p></article>
+          <article class="method-step"><span class="num">04</span><h3>DESIGN</h3><p>Desenhar um programa coerente com o cérebro, a empresa, o momento e a capacidade real de execução.</p></article>
+          <article class="method-step"><span class="num">05</span><h3>EXECUTE</h3><p>Acionar o menor conjunto de pessoas, Companies, ferramentas e ações capaz de produzir resultado.</p></article>
+          <article class="method-step"><span class="num">06</span><h3>MEASURE</h3><p>Observar o que mudou, aprender com a evidência e atualizar o próximo movimento.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="map-section section" id="doc-map">
+      <div class="container map-grid">
+        <div class="map-copy">
+          <span class="eyebrow">Primeiro produto</span>
+          <h2 class="section-title">DOC MAP</h2>
+          <p class="lead">Uma leitura estruturada da sua realidade, da principal restrição e do próximo movimento.</p>
+          <ul class="map-list">
+            <li>Realidade atual e resultado desejado</li>
+            <li>Restrição central e ponto cego provável</li>
+            <li>Decisão que precisa vir primeiro</li>
+            <li>Plano inicial de 30 ou 90 dias</li>
+            <li>Encaminhamento para o menor próximo passo</li>
+          </ul>
+          <button class="button js-start" type="button">Criar leitura preliminar <span class="arrow">→</span></button>
+        </div>
+        <div class="map-preview" aria-label="Exemplo de DOC MAP">
+          <div class="map-sheet">
+            <div class="map-sheet-head"><strong>DOC MAP / 001</strong><span>Leitura de contexto</span></div>
+            <div class="map-block"><label>Realidade atual</label><p>Muitas frentes competem pela mesma energia decisória do fundador.</p></div>
+            <div class="map-block"><label>Restrição central</label><p>O problema não é falta de capacidade. É ausência de sequência operacional.</p></div>
+            <div class="map-block"><label>Decisão necessária</label><p>Definir o único resultado que organiza os próximos 90 dias.</p></div>
+            <div class="map-block"><label>Próximo movimento</label><p class="map-next">Construir o mapa antes de adicionar outra solução.</p></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="offers">
+      <div class="container">
+        <div class="offers-head">
+          <div><span class="eyebrow">Níveis de acesso</span><h2 class="section-title">Não compre mais proximidade do que precisa.</h2></div>
+          <p class="lead">A mesma inteligência em diferentes níveis de profundidade, acompanhamento e presença do Doc.</p>
+        </div>
+        <div class="pricing-grid">
+          <article class="plan">
+            <span class="plan-tag">Descoberta</span><h3>ASK DOC</h3><p class="plan-desc">Reconhecimento inicial da intenção e uma primeira pergunta capaz de melhorar o problema.</p><div class="price">Gratuito</div>
+            <ul><li>Conversa inicial curta</li><li>Leitura preliminar</li><li>Indicação do próximo passo</li></ul>
+            <button class="button outline full js-start" type="button">Começar agora</button>
+          </article>
+          <article class="plan featured">
+            <span class="plan-tag">Melhor ponto de entrada</span><h3>DOC MAP</h3><p class="plan-desc">O contexto organizado em clareza, prioridade, decisão e plano inicial.</p><div class="price">R$ 690 <small>pagamento único</small></div>
+            <ul><li>Intake estruturado</li><li>Mapa completo de contexto</li><li>Restrição e ponto cego</li><li>Plano inicial e encaminhamento</li></ul>
+            <button class="button light full js-plan" data-plan="DOC MAP" type="button">Criar meu mapa</button>
+          </article>
+          <article class="plan">
+            <span class="plan-tag">Transformação</span><h3>DOC METHOD 90</h3><p class="plan-desc">Um programa personalizado de 90 dias com milestones, revisão e mensuração.</p><div class="price">R$ 12.900 <small>por 90 dias</small></div>
+            <ul><li>DOC MAP completo</li><li>Programa de 90 dias</li><li>Checkpoints definidos</li><li>Coordenação e relatório final</li></ul>
+            <button class="button outline full js-plan" data-plan="DOC METHOD 90" type="button">Aplicar para o programa</button>
+          </article>
+          <article class="plan">
+            <span class="plan-tag">Acesso escasso</span><h3>PRIVATE OFFICE</h3><p class="plan-desc">Julgamento direto do Doc em decisões complexas e momentos de alta alavancagem.</p><div class="price">R$ 60.000+ <small>por 90 dias</small></div>
+            <ul><li>Análise aprofundada</li><li>Reuniões privadas programadas</li><li>Revisão de decisões críticas</li><li>Posições limitadas</li></ul>
+            <button class="button outline full js-plan" data-plan="DOC PRIVATE OFFICE" type="button">Solicitar acesso</button>
+          </article>
+        </div>
+        <div class="advisory-band">
+          <div><h3>DOC & CO. Advisory / Ventures</h3><p>Para clínicas, empresas, fundadores, instituições, investidores, licenciamento de propriedade intelectual e construção de novas Companies.</p></div>
+          <div class="advisory-price"><strong>A partir de R$ 150.000</strong><span>por projeto · escopo sob análise</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="company section" id="company">
+      <div class="container company-grid">
+        <div class="company-statement">
+          <span class="eyebrow">A Company</span>
+          <h2 class="section-title"><em>Doc</em> é a visão.<br><strong>& Co.</strong> é o sistema.</h2>
+          <p class="lead">A empresa não existe para vender indefinidamente o tempo do fundador. Ela transforma visão, repertório, julgamento e método em propriedade intelectual, produtos, programas e execução.</p>
+          <p class="copy">ASK DOC é a porta conversacional. DOC MAP é o primeiro produto de clareza. THE DOC METHOD é o sistema de transformação. PRIVATE OFFICE é o nível de acesso direto. Advisory & Ventures é a camada institucional.</p>
+        </div>
+        <div class="company-card">
+          <div class="company-card-top"><span>DOC & CO.</span><span>Human Performance · Companies · Future Systems</span></div>
+          <blockquote>Different levels of access to the way Doc sees, connects, decides and builds.</blockquote>
+          <footer><span>A tecnologia permanece invisível na estética e presente na inteligência da experiência.</span><span>Cada interação melhora perguntas, mapas, decisões e programas futuros.</span></footer>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="about">
+      <div class="container about-grid">
+        <div class="about-sticky"><span class="eyebrow">Doutor Doc</span><h2 class="section-title">Enxergar o que o sistema inteiro está dizendo.</h2></div>
+        <div class="about-copy">
+          <p class="intro">Doc atua na interseção entre biologia, comportamento, dados, estratégia, tecnologia e construção de sistemas humanos.</p>
+          <p class="copy">Depois de mais de quinze anos de prática aplicada e mais de vinte mil programas, o ativo central não é uma resposta pronta. É uma forma de reconstruir problemas complexos, conectar sinais que estavam separados e desenhar uma sequência que possa ser executada e medida.</p>
+          <p class="copy">A DOC & CO. nasce para tornar essa inteligência acessível sem transformá-la em conteúdo genérico ou em uma agenda impossível de escalar. O Human continua no centro. A inteligência artificial amplia contexto, memória, organização e capacidade de execução. O julgamento humano entra onde realmente muda a decisão.</p>
+          <div class="about-points">
+            <article class="about-point"><strong>Human Performance</strong><span>Infraestrutura biológica, energia, clareza e capacidade de sustentar resultados extraordinários.</span></article>
+            <article class="about-point"><strong>Non-linear thinking</strong><span>Reconhecimento de padrões e conexão entre áreas que normalmente trabalham de forma fragmentada.</span></article>
+            <article class="about-point"><strong>Company building</strong><span>Transformar conhecimento, problemas e oportunidades em Companies AI First operacionais.</span></article>
+            <article class="about-point"><strong>Future systems</strong><span>Projetar experiências, organizações e ecossistemas adequados ao que está emergindo.</span></article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="faq section" id="faq">
+      <div class="container faq-grid">
+        <div><span class="eyebrow">Perguntas</span><h2 class="section-title">Antes de começar.</h2></div>
+        <div class="faq-list">
+          <details><summary>A inteligência do site é o próprio Doc?</summary><p>Não. ASK DOC é uma interface da DOC & CO. construída a partir de métodos, critérios e conteúdos aprovados pelo Doc. Quando houver participação direta do fundador, isso será informado de forma explícita.</p></details>
+          <details><summary>Preciso escolher um produto antes de explicar meu problema?</summary><p>Não. O fluxo foi desenhado para reconhecer primeiro o que você está tentando transformar. O produto aparece somente depois que existe contexto suficiente para recomendar o menor próximo passo útil.</p></details>
+          <details><summary>DOC MAP é consulta médica?</summary><p>Não necessariamente. DOC MAP é uma leitura estruturada de contexto. Quando a necessidade envolver decisão clínica, diagnóstico ou prescrição, ela deve ser encaminhada para a estrutura profissional e clínica adequada.</p></details>
+          <details><summary>O Doc participa de todos os programas?</summary><p>Não. Cada oferta define claramente o nível de participação do Doc, da equipe e dos sistemas da Company. O acesso direto é reservado para situações em que o julgamento do fundador adiciona valor excepcional.</p></details>
+          <details><summary>A DOC & CO. atende empresas?</summary><p>Sim. A camada institucional trabalha com profissionais, clínicas, empresas, fundadores, investidores e organizações em projetos de estratégia, propriedade intelectual, sistemas AI First e criação de Companies.</p></details>
+        </div>
+      </div>
+    </section>
+
+    <section class="closing">
+      <div class="container closing-card">
+        <div><span class="eyebrow">Seu contexto é o começo</span><h2 class="section-title">Não comece escolhendo um produto. Comece dizendo o que está acontecendo.</h2></div>
+        <div class="closing-bottom"><p>A primeira leitura organiza a realidade, identifica a principal restrição e mostra qual caminho merece sua energia agora.</p><button class="button light js-start" type="button">Criar meu DOC MAP <span class="arrow">→</span></button></div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div><a class="wordmark" href="#top"><span class="mark">D</span><span>DOC & CO.</span></a><div class="footer-meta">Founder-led intelligence company.<br>Florianópolis · Global.</div></div>
+      <div class="footer-right">Human Performance · Company Building · Future Systems<br>© <span id="year"></span> DOC & CO. Primeira versão operacional.</div>
+    </div>
+  </footer>
+
+  <div class="modal" id="wizardModal" role="dialog" aria-modal="true" aria-labelledby="wizardTitle">
+    <div class="modal-panel">
+      <div class="modal-head"><strong id="wizardTitle">ASK DOC · Leitura preliminar</strong><button class="close-button" id="closeModal" type="button" aria-label="Fechar">×</button></div>
+      <div class="modal-body">
+        <div class="progress" aria-hidden="true"><span id="progressBar"></span></div>
+
+        <section class="wizard-step active" data-step="0">
+          <span class="step-kicker">01 · Contexto</span><h2>O que está acontecendo?</h2><p>Não tente organizar perfeitamente. Descreva a situação como ela está.</p>
+          <div class="field"><label for="contextInput">Seu contexto</label><textarea id="contextInput" placeholder="Ex.: Minha empresa cresceu, mas todas as decisões ainda dependem de mim..."></textarea></div>
+          <div class="wizard-actions"><span></span><button class="button next-step" type="button">Continuar <span class="arrow">→</span></button></div>
+        </section>
+
+        <section class="wizard-step" data-step="1">
+          <span class="step-kicker">02 · Domínio</span><h2>Onde a transformação precisa acontecer?</h2><p>Escolha a porta mais próxima. O mapa poderá conectar outras áreas depois.</p>
+          <div class="option-grid" id="domainOptions">
+            <button class="option" type="button" data-value="human"><strong>Em mim</strong><span>Saúde, energia, longevidade e Human Performance.</span></button>
+            <button class="option" type="button" data-value="practice"><strong>Na minha prática</strong><span>Conhecimento, método, produtos e operação profissional.</span></button>
+            <button class="option" type="button" data-value="company"><strong>Na minha empresa</strong><span>Estratégia, oferta, operação, dados e execução.</span></button>
+            <button class="option" type="button" data-value="project"><strong>No próximo projeto</strong><span>Ideia, venture, parceria ou nova Company.</span></button>
+            <button class="option" type="button" data-value="learning"><strong>No que preciso aprender</strong><span>Conhecimento customizado para uma capacidade real.</span></button>
+          </div>
+          <div class="wizard-actions"><button class="back-button prev-step" type="button">← Voltar</button><button class="button next-step" type="button">Continuar <span class="arrow">→</span></button></div>
+        </section>
+
+        <section class="wizard-step" data-step="2">
+          <span class="step-kicker">03 · Resultado</span><h2>O que precisa estar diferente?</h2><p>Imagine uma evidência concreta de que essa transformação aconteceu.</p>
+          <div class="field"><label for="resultInput">Resultado desejado</label><textarea id="resultInput" placeholder="Ex.: Em 90 dias, quero que a empresa execute as prioridades sem depender de mim para cada decisão..."></textarea></div>
+          <div class="wizard-actions"><button class="back-button prev-step" type="button">← Voltar</button><button class="button next-step" type="button">Continuar <span class="arrow">→</span></button></div>
+        </section>
+
+        <section class="wizard-step" data-step="3">
+          <span class="step-kicker">04 · Restrição</span><h2>O que está impedindo isso hoje?</h2><p>Pode ser falta de clareza, energia, tempo, método, equipe, informação, decisão ou execução.</p>
+          <div class="field"><label for="obstacleInput">Principal obstáculo percebido</label><textarea id="obstacleInput" placeholder="Ex.: Tenho muitas iniciativas abertas e nenhum critério claro para decidir o que vem primeiro..."></textarea></div>
+          <div class="field"><label for="attemptsInput">O que você já tentou? <span style="font-weight:400;color:#777d74">(opcional)</span></label><input id="attemptsInput" type="text" placeholder="Ex.: Contratei equipe, ferramentas e consultorias, mas o sistema continua fragmentado." /></div>
+          <div class="wizard-actions"><button class="back-button prev-step" type="button">← Voltar</button><button class="button next-step" type="button">Continuar <span class="arrow">→</span></button></div>
+        </section>
+
+        <section class="wizard-step" data-step="4">
+          <span class="step-kicker">05 · Urgência</span><h2>Quanto isso exige movimento agora?</h2><p>Urgência alta não significa fazer tudo. Significa reduzir o tempo até a decisão certa.</p>
+          <div class="range-wrap"><input id="urgencyInput" type="range" min="1" max="10" value="6" aria-label="Urgência de 1 a 10" /><div class="range-labels"><span>Pode esperar</span><span>Precisa mudar agora</span></div><div class="urgency-value"><span id="urgencyValue">6</span>/10</div></div>
+          <div class="wizard-actions"><button class="back-button prev-step" type="button">← Voltar</button><button class="button next-step" type="button">Continuar <span class="arrow">→</span></button></div>
+        </section>
+
+        <section class="wizard-step" data-step="5">
+          <span class="step-kicker">06 · Profundidade</span><h2>Que tipo de ajuda faria diferença?</h2><p>Escolha a necessidade real, não o produto.</p>
+          <div class="option-grid" id="supportOptions">
+            <button class="option" type="button" data-value="answer"><strong>Uma resposta</strong><span>Quero melhorar a pergunta e entender o próximo passo.</span></button>
+            <button class="option" type="button" data-value="map"><strong>Um mapa</strong><span>Quero contexto, prioridade, decisão e sequência.</span></button>
+            <button class="option" type="button" data-value="program"><strong>Um programa</strong><span>Quero executar uma transformação durante 90 dias.</span></button>
+            <button class="option" type="button" data-value="judgment"><strong>Julgamento direto</strong><span>Há uma decisão complexa e a presença do Doc importa.</span></button>
+          </div>
+          <div class="wizard-actions"><button class="back-button prev-step" type="button">← Voltar</button><button class="button" id="generateMap" type="button">Gerar leitura <span class="arrow">→</span></button></div>
+        </section>
+
+        <section class="wizard-step" data-step="6" id="resultStep">
+          <div class="result-head"><div><span class="step-kicker">DOC MAP · Leitura preliminar</span><h2>Seu próximo movimento.</h2></div><span class="result-badge" id="resultDomainBadge">Contexto organizado</span></div>
+          <div class="result-grid" id="resultGrid"></div>
+          <div class="recommendation"><div><span>Caminho recomendado</span><strong id="recommendedOffer">DOC MAP</strong></div><button class="button light" id="recommendationButton" type="button">Selecionar caminho</button></div>
+          <div class="result-actions"><button class="button outline" id="copyMap" type="button">Copiar DOC MAP</button><button class="button outline" id="printMap" type="button">Salvar em PDF</button><button class="button outline" id="restartMap" type="button">Recomeçar</button></div>
+          <p class="privacy-note">Esta é uma leitura automatizada e preliminar. Ela não substitui avaliação profissional, decisão clínica ou revisão humana. As respostas ficam somente neste dispositivo nesta versão.</p>
+        </section>
+      </div>
+    </div>
+  </div>
+  <div class="toast" id="toast" role="status" aria-live="polite">DOC MAP copiado.</div>
+
+  <script>
+    (() => {
+      const state = {
+        step: 0,
+        context: '',
+        domain: '',
+        result: '',
+        obstacle: '',
+        attempts: '',
+        urgency: 6,
+        support: '',
+        desiredPlan: ''
+      };
+
+      const domainNames = {
+        human: 'Human Performance',
+        practice: 'Prática profissional',
+        company: 'Empresa',
+        project: 'Projeto / Venture',
+        learning: 'Aprendizado'
+      };
+
+      const thoughts = [
+        '“Tenho muitas informações e nenhuma sequência clara.”',
+        '“Sei que posso viver melhor, mas não sei o que mudar primeiro.”',
+        '“Minha empresa cresceu, mas continua dependendo de mim.”',
+        '“Quero transformar meu conhecimento em uma Company.”',
+        '“Tenho um problema complexo e preciso enxergar o todo.”'
+      ];
+
+      const modal = document.getElementById('wizardModal');
+      const steps = [...document.querySelectorAll('.wizard-step')];
+      const progressBar = document.getElementById('progressBar');
+      const toast = document.getElementById('toast');
+      const contextInput = document.getElementById('contextInput');
+      const resultInput = document.getElementById('resultInput');
+      const obstacleInput = document.getElementById('obstacleInput');
+      const attemptsInput = document.getElementById('attemptsInput');
+      const urgencyInput = document.getElementById('urgencyInput');
+      const urgencyValue = document.getElementById('urgencyValue');
+      const heroContext = document.getElementById('heroContext');
+      const heroForm = document.getElementById('heroForm');
+      const header = document.getElementById('siteHeader');
+
+      document.getElementById('year').textContent = new Date().getFullYear();
+
+      window.addEventListener('scroll', () => header.classList.toggle('scrolled', window.scrollY > 20), { passive: true });
+
+      let thoughtIndex = 0;
+      const thoughtLine = document.getElementById('thoughtLine');
+      setInterval(() => {
+        if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+        thoughtLine.style.opacity = '0';
+        setTimeout(() => {
+          thoughtIndex = (thoughtIndex + 1) % thoughts.length;
+          thoughtLine.textContent = thoughts[thoughtIndex];
+          thoughtLine.style.opacity = '1';
+        }, 240);
+      }, 3900);
+
+      function openWizard(domain = '', context = '', desiredPlan = '') {
+        state.domain = domain || state.domain;
+        state.context = context || state.context;
+        state.desiredPlan = desiredPlan || '';
+        contextInput.value = state.context;
+        setSelected(document.getElementById('domainOptions'), state.domain);
+        state.step = state.context ? (state.domain ? 2 : 1) : 0;
+        showStep(state.step);
+        modal.classList.add('open');
+        document.body.classList.add('modal-open');
+        setTimeout(() => {
+          const active = steps[state.step];
+          const focusable = active?.querySelector('textarea, input, button');
+          focusable?.focus();
+        }, 80);
+      }
+
+      function closeWizard() {
+        modal.classList.remove('open');
+        document.body.classList.remove('modal-open');
+      }
+
+      function showStep(index) {
+        state.step = index;
+        steps.forEach((step, i) => step.classList.toggle('active', i === index));
+        progressBar.style.width = `${Math.min(((index + 1) / 7) * 100, 100)}%`;
+      }
+
+      function setSelected(container, value) {
+        if (!container) return;
+        [...container.querySelectorAll('.option')].forEach(btn => btn.classList.toggle('selected', btn.dataset.value === value));
+      }
+
+      function showToast(message) {
+        toast.textContent = message;
+        toast.classList.add('show');
+        setTimeout(() => toast.classList.remove('show'), 2200);
+      }
+
+      function isBlank(value) { return !value || !value.trim(); }
+
+      function goNext() {
+        if (state.step === 0) {
+          state.context = contextInput.value.trim();
+          if (isBlank(state.context)) { contextInput.focus(); showToast('Conte brevemente o que está acontecendo.'); return; }
+        }
+        if (state.step === 1 && !state.domain) { showToast('Escolha a porta mais próxima.'); return; }
+        if (state.step === 2) {
+          state.result = resultInput.value.trim();
+          if (isBlank(state.result)) { resultInput.focus(); showToast('Descreva o resultado desejado.'); return; }
+        }
+        if (state.step === 3) {
+          state.obstacle = obstacleInput.value.trim();
+          state.attempts = attemptsInput.value.trim();
+          if (isBlank(state.obstacle)) { obstacleInput.focus(); showToast('Descreva o principal obstáculo percebido.'); return; }
+        }
+        if (state.step === 4) state.urgency = Number(urgencyInput.value);
+        showStep(Math.min(state.step + 1, 5));
+      }
+
+      function goBack() { showStep(Math.max(state.step - 1, 0)); }
+
+      document.querySelectorAll('.js-start').forEach(btn => btn.addEventListener('click', () => openWizard()));
+      document.querySelectorAll('.js-domain-start').forEach(btn => btn.addEventListener('click', () => openWizard(btn.dataset.domain)));
+      document.querySelectorAll('.js-plan').forEach(btn => btn.addEventListener('click', () => openWizard('', '', btn.dataset.plan)));
+      document.querySelectorAll('.next-step').forEach(btn => btn.addEventListener('click', goNext));
+      document.querySelectorAll('.prev-step').forEach(btn => btn.addEventListener('click', goBack));
+
+      document.querySelectorAll('.chip').forEach(chip => chip.addEventListener('click', () => {
+        document.querySelectorAll('.chip').forEach(c => c.classList.remove('active'));
+        chip.classList.add('active');
+        state.domain = chip.dataset.domain;
+      }));
+
+      heroForm.addEventListener('submit', event => {
+        event.preventDefault();
+        openWizard(state.domain, heroContext.value.trim());
+      });
+
+      document.getElementById('domainOptions').addEventListener('click', event => {
+        const option = event.target.closest('.option');
+        if (!option) return;
+        state.domain = option.dataset.value;
+        setSelected(document.getElementById('domainOptions'), state.domain);
+      });
+
+      document.getElementById('supportOptions').addEventListener('click', event => {
+        const option = event.target.closest('.option');
+        if (!option) return;
+        state.support = option.dataset.value;
+        setSelected(document.getElementById('supportOptions'), state.support);
+      });
+
+      urgencyInput.addEventListener('input', () => { urgencyValue.textContent = urgencyInput.value; state.urgency = Number(urgencyInput.value); });
+      document.getElementById('closeModal').addEventListener('click', closeWizard);
+      modal.addEventListener('click', event => { if (event.target === modal) closeWizard(); });
+      document.addEventListener('keydown', event => { if (event.key === 'Escape' && modal.classList.contains('open')) closeWizard(); });
+
+      const maps = {
+        human: {
+          blindspot: 'Tentar otimizar uma variável isolada antes de estabelecer contexto, baseline e capacidade real de adesão.',
+          decision: 'Definir qual resultado humano deve organizar os próximos 90 dias e quais dados precisam validar o ponto de partida.',
+          next: 'Construir um baseline objetivo e uma sequência mínima antes de adicionar intervenções. Decisões clínicas devem seguir para validação profissional adequada.'
+        },
+        practice: {
+          blindspot: 'Confundir excelência técnica com um sistema de entrega que outras pessoas conseguem compreender, operar e melhorar.',
+          decision: 'Escolher qual transformação central será codificada primeiro em método, produto e evidência de resultado.',
+          next: 'Mapear entrada, raciocínio, entrega e resultado de um único serviço antes de ampliar portfólio ou automação.'
+        },
+        company: {
+          blindspot: 'Adicionar ferramentas, pessoas e iniciativas sem um critério único de prioridade e sem explicitar onde o fundador ainda é o gargalo.',
+          decision: 'Definir o resultado operacional que organiza o próximo ciclo e quais decisões podem deixar de depender do fundador.',
+          next: 'Criar um mapa de resultado, restrição e dono para o ciclo de 90 dias; pausar frentes que não sustentam esse resultado.'
+        },
+        project: {
+          blindspot: 'Construir a solução completa antes de provar problema, cliente, promessa e mecanismo de valor.',
+          decision: 'Escolher qual hipótese precisa ser verdadeira para o projeto merecer mais capital, tempo e complexidade.',
+          next: 'Converter a ideia em um teste pequeno: problema explícito, público específico, oferta clara e evidência de demanda.'
+        },
+        learning: {
+          blindspot: 'Consumir conteúdo sem definir a capacidade prática que deverá existir ao final do aprendizado.',
+          decision: 'Definir o que você será capaz de fazer, decidir ou construir como evidência de domínio.',
+          next: 'Desenhar uma trilha reversa a partir da evidência de domínio, com prática, recuperação ativa e revisão espaçada.'
+        }
+      };
+
+      function inferConstraint() {
+        const text = `${state.context} ${state.obstacle}`.toLowerCase();
+        if (/tempo|correria|agenda|ocupad/.test(text)) return 'A capacidade está dispersa: falta proteger tempo e remover trabalho que não sustenta o resultado prioritário.';
+        if (/energia|cansa|sono|exaust|fadiga/.test(text)) return 'A ambição parece maior do que a infraestrutura atual consegue sustentar de forma consistente.';
+        if (/equipe|pessoa|deleg|depende de mim|centraliz/.test(text)) return 'O sistema ainda depende de conhecimento implícito e decisões concentradas em uma única pessoa.';
+        if (/clareza|confus|muitas|prioridade|foco|dispers/.test(text)) return 'Existem frentes demais competindo pelo mesmo recurso decisório; falta uma regra explícita de prioridade.';
+        if (/dinheiro|caixa|capital|venda|receita/.test(text)) return 'A restrição econômica precisa ser conectada a uma escolha operacional concreta, não tratada apenas como meta abstrata.';
+        if (/medo|trav|vergonha|insegur/.test(text)) return 'O custo percebido de escolher e se expor está retardando a criação de evidência real.';
+        return state.obstacle || 'A principal restrição ainda está descrita como sintoma; o próximo passo é convertê-la em uma decisão observável.';
+      }
+
+      function chooseOffer() {
+        if (state.desiredPlan) return state.desiredPlan;
+        if (state.support === 'judgment') return 'DOC PRIVATE OFFICE';
+        if (state.support === 'program') return 'DOC METHOD 90';
+        if (state.support === 'answer') return 'ASK DOC';
+        return 'DOC MAP';
+      }
+
+      function safe(value) {
+        return String(value || '').replace(/[&<>'"]/g, char => ({ '&':'&amp;', '<':'&lt;', '>':'&gt;', "'":'&#39;', '"':'&quot;' }[char]));
+      }
+
+      function generateMap() {
+        if (!state.support) { showToast('Escolha o tipo de ajuda que faria diferença.'); return; }
+        const blueprint = maps[state.domain] || maps.project;
+        const offer = chooseOffer();
+        const urgencyNote = state.urgency >= 8
+          ? 'A urgência é alta. Reduza o tempo até a decisão, mas não aumente o número de frentes.'
+          : state.urgency <= 3
+            ? 'A urgência é baixa. Use isso para construir evidência com qualidade antes de ampliar o compromisso.'
+            : 'A urgência permite um ciclo curto de clareza e teste antes de escalar a execução.';
+
+        const items = [
+          ['Realidade atual', state.context],
+          ['Resultado desejado', state.result],
+          ['Restrição central', inferConstraint()],
+          ['Ponto cego provável', blueprint.blindspot],
+          ['Decisão necessária', blueprint.decision],
+          ['Próximo movimento', `${blueprint.next}\n\n${urgencyNote}`]
+        ];
+
+        const grid = document.getElementById('resultGrid');
+        grid.innerHTML = items.map(([label, value], index) => `
+          <article class="result-item ${index === 5 ? 'full' : ''}">
+            <label>${safe(label)}</label>
+            <p>${safe(value)}</p>
+          </article>`).join('');
+
+        document.getElementById('resultDomainBadge').textContent = domainNames[state.domain] || 'Contexto organizado';
+        document.getElementById('recommendedOffer').textContent = offer;
+        document.getElementById('recommendationButton').textContent = offer === 'ASK DOC' ? 'Continuar conversa' : offer === 'DOC MAP' ? 'Selecionar DOC MAP' : 'Solicitar acesso';
+        showStep(6);
+        saveLocal();
+      }
+
+      function mapAsText() {
+        const blueprint = maps[state.domain] || maps.project;
+        const urgencyNote = state.urgency >= 8 ? 'Urgência alta: reduzir o tempo até a decisão sem aumentar frentes.' : state.urgency <= 3 ? 'Urgência baixa: construir evidência com qualidade.' : 'Urgência moderada: executar um ciclo curto de clareza e teste.';
+        return `DOC & CO. — DOC MAP PRELIMINAR\n\nDOMÍNIO\n${domainNames[state.domain] || 'Não definido'}\n\nREALIDADE ATUAL\n${state.context}\n\nRESULTADO DESEJADO\n${state.result}\n\nRESTRIÇÃO CENTRAL\n${inferConstraint()}\n\nPONTO CEGO PROVÁVEL\n${blueprint.blindspot}\n\nDECISÃO NECESSÁRIA\n${blueprint.decision}\n\nPRÓXIMO MOVIMENTO\n${blueprint.next}\n\n${urgencyNote}\n\nCAMINHO RECOMENDADO\n${chooseOffer()}\n\nEsta é uma leitura automatizada e preliminar.`;
+      }
+
+      function saveLocal() {
+        try { localStorage.setItem('doc-and-co-map', JSON.stringify({ ...state, savedAt: new Date().toISOString() })); } catch (_) {}
+      }
+
+      document.getElementById('generateMap').addEventListener('click', generateMap);
+      document.getElementById('copyMap').addEventListener('click', async () => {
+        try { await navigator.clipboard.writeText(mapAsText()); showToast('DOC MAP copiado.'); }
+        catch (_) { showToast('Selecione e copie o conteúdo do mapa.'); }
+      });
+      document.getElementById('printMap').addEventListener('click', () => window.print());
+      document.getElementById('restartMap').addEventListener('click', () => {
+        Object.assign(state, { step: 0, context:'', domain:'', result:'', obstacle:'', attempts:'', urgency:6, support:'', desiredPlan:'' });
+        [contextInput, resultInput, obstacleInput, attemptsInput, heroContext].forEach(el => el.value = '');
+        urgencyInput.value = '6'; urgencyValue.textContent = '6';
+        document.querySelectorAll('.option, .chip').forEach(el => el.classList.remove('selected','active'));
+        try { localStorage.removeItem('doc-and-co-map'); } catch (_) {}
+        showStep(0);
+      });
+      document.getElementById('recommendationButton').addEventListener('click', () => {
+        closeWizard();
+        document.getElementById('offers').scrollIntoView({ behavior: 'smooth' });
+        showToast(`${chooseOffer()} selecionado. A captura segura será ativada no backend próprio.`);
+      });
+
+      try {
+        const saved = JSON.parse(localStorage.getItem('doc-and-co-map') || 'null');
+        if (saved && saved.context) {
+          state.context = saved.context;
+          state.domain = saved.domain || '';
+          heroContext.value = saved.context;
+          const chip = document.querySelector(`.chip[data-domain="${saved.domain}"]`);
+          chip?.classList.add('active');
+        }
+      } catch (_) {}
+    })();
+  </script>
+</body>
+</html>
